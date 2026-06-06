@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String            @id @default(cuid())
+  name             String
+  email            String            @unique
+  password         String
+  createdAt        DateTime          @default(now())
+  answers          Answer[]
+  questions        Question[]
+  reviews          Review[]
+  savedColleges    SavedCollege[]
+  savedComparisons SavedComparison[]
+}
+
+model College {
+  id           String         @id @default(cuid())
+  name         String
+  location     String
+  fees         Int
+  rating       Float
+  overview     String
+  avgPlacement Int
+  createdAt    DateTime       @default(now())
+  courses      Course[]
+  cutoffs      Cutoff[]
+  reviews      Review[]
+  savedBy      SavedCollege[]
+}
+
+model Course {
+  id        String  @id @default(cuid())
+  name      String
+  duration  String
+  fees      Int
+  collegeId String
+  college   College @relation(fields: [collegeId], references: [id])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+  userId    String
+  collegeId String
+  college   College  @relation(fields: [collegeId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Question {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  userId    String
+  answers   Answer[]
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Answer {
+  id         String   @id @default(cuid())
+  content    String
+  createdAt  DateTime @default(now())
+  questionId String
+  userId     String
+  question   Question @relation(fields: [questionId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model Cutoff {
+  id        String  @id @default(cuid())
+  exam      String
+  rank      Int
+  category  String
+  collegeId String
+  college   College @relation(fields: [collegeId], references: [id])
+}
+
+model SavedCollege {
+  id        String  @id @default(cuid())
+  userId    String
+  collegeId String
+  college   College @relation(fields: [collegeId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+}
+
+model SavedComparison {
+  id         String @id @default(cuid())
+  userId     String
+  collegeIds String
+  user       User   @relation(fields: [userId], references: [id])
+}

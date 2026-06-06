@@ -1,0 +1,262 @@
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+async function main() {
+  await prisma.college.deleteMany();
+
+  await prisma.college.createMany({
+    data: [
+      {
+        name: "IIT Madras",
+        location: "Chennai, Tamil Nadu",
+        fees: 1200000,
+        rating: 4.9,
+        overview: "Top engineering institute in India",
+        avgPlacement: 3000000,
+      },
+      {
+        name: "IIT Bombay",
+        location: "Mumbai, Maharashtra",
+        fees: 1100000,
+        rating: 4.8,
+        overview: "Premier engineering college in India",
+        avgPlacement: 2800000,
+      },
+      {
+        name: "IIT Delhi",
+        location: "New Delhi",
+        fees: 1150000,
+        rating: 4.9,
+        overview: "Leading IIT with strong placements",
+        avgPlacement: 2900000,
+      },
+      {
+        name: "IIT Kanpur",
+        location: "Kanpur, Uttar Pradesh",
+        fees: 1050000,
+        rating: 4.8,
+        overview: "Known for research and innovation",
+        avgPlacement: 2700000,
+      },
+      {
+        name: "IIT Kharagpur",
+        location: "Kharagpur, West Bengal",
+        fees: 1000000,
+        rating: 4.8,
+        overview: "Oldest IIT in India",
+        avgPlacement: 2600000,
+      },
+      {
+        name: "IIT Roorkee",
+        location: "Roorkee, Uttarakhand",
+        fees: 980000,
+        rating: 4.7,
+        overview: "Top engineering and research institute",
+        avgPlacement: 2400000,
+      },
+      {
+        name: "IIT Hyderabad",
+        location: "Hyderabad, Telangana",
+        fees: 1150000,
+        rating: 4.8,
+        overview: "Fast-growing IIT with strong CSE programs",
+        avgPlacement: 2500000,
+      },
+      {
+        name: "IIT Guwahati",
+        location: "Guwahati, Assam",
+        fees: 950000,
+        rating: 4.7,
+        overview: "Leading engineering institute in Northeast India",
+        avgPlacement: 2200000,
+      },
+      {
+        name: "NIT Trichy",
+        location: "Tiruchirappalli, Tamil Nadu",
+        fees: 800000,
+        rating: 4.7,
+        overview: "One of the best NITs in India",
+        avgPlacement: 1800000,
+      },
+      {
+        name: "NIT Surathkal",
+        location: "Mangalore, Karnataka",
+        fees: 820000,
+        rating: 4.7,
+        overview: "Highly ranked NIT",
+        avgPlacement: 1700000,
+      },
+      {
+        name: "NIT Warangal",
+        location: "Warangal, Telangana",
+        fees: 790000,
+        rating: 4.6,
+        overview: "Strong placements and academics",
+        avgPlacement: 1600000,
+      },
+      {
+        name: "NIT Calicut",
+        location: "Calicut, Kerala",
+        fees: 780000,
+        rating: 4.6,
+        overview: "Popular NIT in South India",
+        avgPlacement: 1500000,
+      },
+      {
+        name: "NIT Rourkela",
+        location: "Rourkela, Odisha",
+        fees: 770000,
+        rating: 4.6,
+        overview: "Top NIT with strong placements",
+        avgPlacement: 1450000,
+      },
+      {
+        name: "IIIT Hyderabad",
+        location: "Hyderabad, Telangana",
+        fees: 1400000,
+        rating: 4.8,
+        overview: "Strong focus on CSE and research",
+        avgPlacement: 2500000,
+      },
+      {
+        name: "IIIT Bangalore",
+        location: "Bengaluru, Karnataka",
+        fees: 1600000,
+        rating: 4.7,
+        overview: "Top IT-focused institute",
+        avgPlacement: 2200000,
+      },
+      {
+        name: "IIIT Delhi",
+        location: "New Delhi",
+        fees: 1500000,
+        rating: 4.7,
+        overview: "Research-driven institute",
+        avgPlacement: 2100000,
+      },
+      {
+        name: "BITS Pilani",
+        location: "Pilani, Rajasthan",
+        fees: 2200000,
+        rating: 4.7,
+        overview: "Top private engineering institute",
+        avgPlacement: 2200000,
+      },
+      {
+        name: "BITS Goa",
+        location: "Goa",
+        fees: 2100000,
+        rating: 4.6,
+        overview: "Excellent private engineering college",
+        avgPlacement: 1900000,
+      },
+      {
+        name: "BITS Hyderabad",
+        location: "Hyderabad, Telangana",
+        fees: 2100000,
+        rating: 4.6,
+        overview: "Strong placements and academics",
+        avgPlacement: 1850000,
+      },
+      {
+        name: "VIT Vellore",
+        location: "Vellore, Tamil Nadu",
+        fees: 1900000,
+        rating: 4.5,
+        overview: "Popular private engineering college",
+        avgPlacement: 1200000,
+      },
+      {
+        name: "SRM University",
+        location: "Chennai, Tamil Nadu",
+        fees: 1700000,
+        rating: 4.4,
+        overview: "Large private engineering university",
+        avgPlacement: 1000000,
+      },
+      {
+        name: "Manipal Institute of Technology",
+        location: "Manipal, Karnataka",
+        fees: 1800000,
+        rating: 4.5,
+        overview: "Well-known private engineering institute",
+        avgPlacement: 1100000,
+      },
+      {
+        name: "Thapar Institute",
+        location: "Patiala, Punjab",
+        fees: 1600000,
+        rating: 4.5,
+        overview: "Strong industry-oriented curriculum",
+        avgPlacement: 1200000,
+      },
+      {
+        name: "DTU",
+        location: "New Delhi",
+        fees: 850000,
+        rating: 4.6,
+        overview: "Top state engineering university",
+        avgPlacement: 1500000,
+      },
+      {
+        name: "NSUT",
+        location: "New Delhi",
+        fees: 830000,
+        rating: 4.6,
+        overview: "Excellent placements in tech companies",
+        avgPlacement: 1400000,
+      },
+      {
+        name: "PEC Chandigarh",
+        location: "Chandigarh",
+        fees: 900000,
+        rating: 4.5,
+        overview: "Prestigious government engineering college",
+        avgPlacement: 1300000,
+      },
+      {
+        name: "COEP",
+        location: "Pune, Maharashtra",
+        fees: 650000,
+        rating: 4.5,
+        overview: "Historic engineering college",
+        avgPlacement: 1100000,
+      },
+      {
+        name: "Jadavpur University",
+        location: "Kolkata, West Bengal",
+        fees: 50000,
+        rating: 4.8,
+        overview: "Top public engineering university",
+        avgPlacement: 1400000,
+      },
+      {
+        name: "Anna University",
+        location: "Chennai, Tamil Nadu",
+        fees: 120000,
+        rating: 4.5,
+        overview: "Leading state technical university",
+        avgPlacement: 900000,
+      },
+      {
+        name: "Osmania University",
+        location: "Hyderabad, Telangana",
+        fees: 100000,
+        rating: 4.3,
+        overview: "Historic public university",
+        avgPlacement: 700000,
+      },
+    ],
+  });
+
+  console.log("✅ Colleges seeded successfully");
+}
+
+main()
+  .catch((e) => {
+    console.error("❌ Seeding error:", e);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
